@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>URL Shortener in Python</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="url shortener, Rafael Piloto, Python, Flask">
+    <meta content="" name="URL Shortener developed in Python with Flask framework.">
+
+    <!-- Favicons -->
+    <link href="{{ url_for('static', filename='img/favicon.png') }}" rel="icon">
+    <link href="{{ url_for('static', filename='img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,500,600,700,700i|Montserrat:300,400,500,600,700"
+          rel="stylesheet">
+
+    <!-- Bootstrap CSS File -->
+    <link href="{{ url_for('static', filename='lib/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <!-- Libraries CSS Files -->
+    <link href="{{ url_for('static', filename='lib/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='lib/animate/animate.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='lib/ionicons/css/ionicons.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='lib/lightbox/css/lightbox.min.css') }}" rel="stylesheet">
+
+    <!-- Main Stylesheet File -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+<body>
+<header id="header">
+
+    <div class="container">
+        <div class="logo float-left">
+            <!-- Uncomment below if you prefer to use an image logo -->
+            <h1 class="text-light"><a href="#" class="scrollto"><span>Shorty URL</span></a></h1>
+            <h2 class="text-light"><a href="#" class="scrollto"><span>Made with Python</span></a></h2>
+            <!-- <a href="#header" class="scrollto"><img src="static/img/logo_transparent.png" alt="" class="img-fluid"></a>-->
+        </div>
+
+        <!-- <nav class="main-nav float-right d-none d-lg-block">
+            <ul>
+                <li class="active"><a href="#intro">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#footer">Contact Us</a></li>
+            </ul>
+        </nav>--> <!-- .main-nav -->
+    </div>
+</header>
+<!--==========================
+    Intro Section
+  ============================-->
+<section id="intro" class="clearfix">
+    <div class="container d-flex h-100">
+        <div class="row justify-content-center align-self-center">
+            <div class="col-md-6 intro-info order-md-first order-last">
+                <h2>URL Shortener<br> built with <span>Python!</span></h2>
+                <div>
+                    <form id="form" method="POST" action="{{ url_for('short.add_link') }}">
+                        <div class="form-group">
+                            <!-- <label for="exampleInputEmail1">Link to shorten</label>-->
+                            <input type="url" class="form-control" id="exampleInputEmail1" name="original_url"
+                                   placeholder="Enter the URL you want to shorten">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-get-started">Create Short Link</button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-6 intro-img order-md-last order-first">
+                <img src="static/img/intro-img.svg" alt="" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</section><!-- #intro -->
+<main id="main">
+    <section id="services">
+        <div class="container">
+            <header class="section-header">
+                <h3>About Shorty URL</h3>
+                <p>This is a simple project developed with the goal to learn and practice the use of Python and Flask in
+                    building web apps. Just for
+                    fun I'll try to keep it up and running as long as possible. However, I can't guarantee stability in
+                    high intensity usage, once this
+                    this is hosted at a free Heroku dino.</p>
+            </header>
+            <div class="row">
+
+                <div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-duration="1.4s">
+                    <div class="box">
+                        <div class="icon" style="background: #fceef3;"><i class="ion-ios-analytics-outline"
+                                                                          style="color: #ff689b;"></i></div>
+                        <h4 class="title"><a href="http://flask.pocoo.org/" target="_blank">Flask | Python</a></h4>
+                        <p class="description">This project is based on Flask, a microframework for Python used for
+                            building web apps. I recommend this
+                            <a href="https://www.youtube.com/watch?v=rGQKHpjMn_M" target="_blank">video</a> for the
+                            ones interested in developing a similar app.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-duration="1.4s">
+                    <div class="box">
+                        <div class="icon" style="background: #fff0da;"><i class="ion-ios-bookmarks-outline"
+                                                                          style="color: #e98e06;"></i></div>
+                        <h4 class="title"><a href="https://getbootstrap.com/" target="_blank">Bootstrap v4.3.1</a></h4>
+                        <p class="description">As front-end I used Bootstrap framework, one of the most popular
+                            open-source front-end frameworks for responsive web development.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
+                    <div class="box">
+                        <div class="icon" style="background: #e6fdfc;"><i class="ion-ios-paper-outline"
+                                                                          style="color: #3fcdc7;"></i></div>
+                        <h4 class="title"><a target="_blank"
+                                             href="https://github.com/rafaelpiloto120/url_shortener_piloto">GitHub</a>
+                        </h4>
+                        <p class="description">The code of this project is available at Github. Feel free to fork it and
+                            change / improve it the way you want. Some of my code was also
+                            originally forked.</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- #services -->
+    <!--========================== About Us Section ============================-->
+    <!--========================== Footer ============================-->
+    <footer id="footer" class="section-bg">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="footer-info">
+                            <h4>About Me | Rafael Piloto</h4>
+                            <p class="description">I'm not a programmer or a web engineer, but I do have a guilty
+                                pleasure of coding
+                                something every once in a while. </p>
+                        </div>
+                        <div style="text-align: center">
+                            <div class="social-links">
+                                <a href="https://www.linkedin.com/in/rafaelpiloto" target="_blank" class="linkedin"><i
+                                        class="fa fa-linkedin"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="copyright">Designed and built with a <i class="ion-hammer" style="color: #737373;"></i> and <i
+                    class="ion-heart" style="color: #e31b23;"></i> by <a href="https://rafaelpiloto.com/"
+                                                                         target="_blank">Rafael
+                Piloto</a>
+            </div>
+        </div>
+    </footer><!-- #footer -->
+    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+    <!-- Uncomment below i you want to use a preloader -->
+    <!-- <div id="preloader"></div> -->
+    <link href="{{ url_for('static', filename='lib/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+    <!-- JavaScript Libraries -->
+    <script src="static/lib/jquery/jquery.min.js"></script>
+    <script src="static/lib/jquery/jquery-migrate.min.js"></script>
+    <script src="static/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="static/lib/easing/easing.min.js"></script>
+    <script src="static/lib/mobile-nav/mobile-nav.js"></script>
+    <script src="static/lib/wow/wow.min.js"></script>
+    <script src="static/lib/waypoints/waypoints.min.js"></script>
+    <script src="static/lib/counterup/counterup.min.js"></script>
+    <script src="static/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="static/lib/isotope/isotope.pkgd.min.js"></script>
+    <script src="static/lib/lightbox/js/lightbox.min.js"></script>
+    <!-- Contact Form JavaScript File -->
+    <!--<script src="contactform/contactform.js"></script>-->
+
+    <!-- Template Main Javascript File -->
+    <script src="static/js/main.js"></script>
+</body>
